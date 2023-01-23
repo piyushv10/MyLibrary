@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">MY LIBRARY</string>
+    <string name="activity_all_books">All Books</string>
+    <string name="activity_book">Book Details</string>
+    <string name="activity_google">Google Login</string>
+    <string name="activity_twitter">Twitter Login</string>
+    <string name="activity_facebook">Facebook Login</string>
+    <string name="activity_registration">Registration</string>
+    <string name="activity_already_read">Already Read Books</string>
+    <string name="activity_favourite_books">Favourite Books</string>
+    <string name="activity_wishlist">WishList</string>
+    <string name="activity_currently_reading">Currently Reading Books</string>
+    <string name="prompt_UserName">User Name or Email</string>
+    <string name="prompt_First_Name">First Name</string>
+    <string name="prompt_Last_Name">Last Name</string>
+    <string name="prompt_MobileNumber">Mobile Number</string>
+    <string name="prompt_Email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_forgot_password">Forgot Password?</string>
+    <string name="prompt_Register">Register</string>
+    <string name="prompt_Login">Log In</string>
+    <string name="prompt_confirmPassword">Re-enter Password</string>
+    <string name="action_sign_in_short">Password</string>
+    <string name="action_sign_in">Sign In</string>
+    <string name="action_register">NEW USER? REGISTER</string>
+    <string name="action_Sign_in">Already have an account?</string>
+    <string name="action_Welcome">Create your account. It\'s free and only takes a minute</string>
+    <string name="activity_amazon">Amazon</string>
+
+</resources>

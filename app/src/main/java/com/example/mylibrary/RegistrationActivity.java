@@ -13,11 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,7 +22,6 @@ import com.google.firebase.database.ValueEventListener;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    private FirebaseAuth mAuth;
     Member member;
     String fName,lName,email,password;
     Long mobile;
@@ -52,54 +47,35 @@ public class RegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
-        mAuth = FirebaseAuth.getInstance();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        DatabaseReference root = db.getReference().child("Students");
+        root.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    id = (snapshot.getChildrenCount());
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
         initView();
         btnReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseDatabase db = FirebaseDatabase.getInstance();
-                DatabaseReference root = db.getReference().child("Students");
-                root.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if(snapshot.exists()){
-                            id = (snapshot.getChildrenCount());
-                        }
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                    }
-                });
-                        fName = TextInputEditTextFirstName.getText().toString();
-                        lName = TextInputEditTextLastName.getText().toString();
-                        mobile = Long.parseLong(TextInputEditTextMobileNumber.getText().toString());
-                        email = TextInputEditTextEmail.getText().toString();
-                        password = TextInputEditTextPassWord.getText().toString();
-                        member = new Member(fName, lName, mobile, email, password);
-                        Toast.makeText(RegistrationActivity.this, "H", Toast.LENGTH_SHORT).show();
-                        mAuth.createUserWithEmailAndPassword(email,password)
-                                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<AuthResult> task) {
-                                        if (task.isSuccessful()){
-                                            Toast.makeText(RegistrationActivity.this, "y", Toast.LENGTH_SHORT).show();
-                                            root.child(String.valueOf(id+1)).setValue(member).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<Void> task) {
-                                                    if (task.isSuccessful()){
-                                                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                                                        startActivity(intent);
-                                                        showSnackBar();
-                                                    }
-                                                }
-                                            });
-
-
-                                        }
-                                    }
-                                });
-                    }
+                fName = TextInputEditTextFirstName.getText().toString();
+                lName = TextInputEditTextLastName.getText().toString();
+                mobile = Long.parseLong(TextInputEditTextMobileNumber.getText().toString());
+                email = TextInputEditTextEmail.getText().toString();
+                password = TextInputEditTextPassWord.getText().toString();
+                member = new Member(fName, lName, mobile, email, password);
+                root.child(String.valueOf(id+1)).setValue(member);
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+                showSnackBar();
+            }
 
 
 

@@ -10,7 +10,7 @@
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/TextInputEditTextFirstName"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginTop="96dp"
         android:hint="@string/prompt_First_Name"
         android:imeActionLabel="@string/action_sign_in_short"
@@ -23,12 +23,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-
-
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/TextInputEditTextLastName"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginTop="24dp"
         android:hint="@string/prompt_Last_Name"
         android:imeActionLabel="@string/action_sign_in_short"
@@ -46,7 +44,7 @@
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/TextInputEditTextMobileNumber"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginTop="24dp"
         android:hint="@string/prompt_MobileNumber"
         android:imeActionLabel="@string/action_sign_in_short"
@@ -64,7 +62,7 @@
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/TextInputEditTextEmail"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginTop="24dp"
         android:hint="@string/prompt_Email"
         android:inputType="textEmailAddress"
@@ -78,7 +76,7 @@
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/TextInputEditTextPassWord"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginTop="24dp"
         android:hint="@string/prompt_password"
         android:imeActionLabel="@string/action_sign_in_short"
@@ -95,7 +93,7 @@
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/TextInputEditTextReEnterPassword"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginTop="24dp"
         android:hint="@string/prompt_confirmPassword"
         android:imeActionLabel="@string/action_sign_in_short"

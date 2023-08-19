@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -65,18 +66,19 @@ public class RegistrationActivity extends AppCompatActivity {
         btnReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fName = TextInputEditTextFirstName.getText().toString();
-                lName = TextInputEditTextLastName.getText().toString();
-                mobile = Long.parseLong(TextInputEditTextMobileNumber.getText().toString());
-                email = TextInputEditTextEmail.getText().toString();
-                password = TextInputEditTextPassWord.getText().toString();
-                member = new Member(fName, lName, mobile, email, password);
-                root.child(String.valueOf(id+1)).setValue(member);
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
-                showSnackBar();
+                if (validateData()) {
+                    fName = TextInputEditTextFirstName.getText().toString();
+                    lName = TextInputEditTextLastName.getText().toString();
+                    mobile = Long.parseLong(TextInputEditTextMobileNumber.getText().toString());
+                    email = TextInputEditTextEmail.getText().toString();
+                    password = TextInputEditTextPassWord.getText().toString();
+                    member = new Member(fName, lName, mobile, email, password);
+                    root.child(String.valueOf(id + 1)).setValue(member);
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
+                    showSnackBar();
+                }
             }
-
 
 
             private void showSnackBar() {
@@ -99,6 +101,9 @@ public class RegistrationActivity extends AppCompatActivity {
             }
 
             private boolean validateData() {
+
+                email = TextInputEditTextEmail.getText().toString();
+
                 if (TextInputEditTextFirstName.getText().toString().equals("")){
                     txtWarnFirstName.setVisibility(View.VISIBLE);
                     return false;
@@ -107,8 +112,9 @@ public class RegistrationActivity extends AppCompatActivity {
                     txtWarnLastName.setVisibility(View.VISIBLE);
                     return false;
                 }
-                if (TextInputEditTextEmail.getText().toString().equals("")){
+                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
                     txtWarnEmail.setVisibility(View.VISIBLE);
+                    txtWarnEmail.setText("Enter Valid Email");
                     return false;
                 }
                 if (TextInputEditTextPassWord.getText().toString().equals("")){

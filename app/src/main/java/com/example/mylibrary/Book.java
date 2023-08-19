@@ -5,6 +5,8 @@ public class Book {
     private String name,author,imageUrl,shortDesc,longDesc;
     private Boolean isExpanded;
 
+    public Book(){}
+
     public Book(int id, int pages, String name, String author, String imageUrl, String shortDesc, String longDesc) {
         this.id = id;
         this.pages = pages;

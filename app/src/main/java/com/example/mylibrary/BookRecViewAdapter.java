@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.transition.TransitionManager;
 
 import com.bumptech.glide.Glide;
+
 
 import java.util.ArrayList;
 
@@ -46,6 +48,8 @@ public class BookRecViewAdapter extends RecyclerView.Adapter<BookRecViewAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
+        int pos = holder.getAdapterPosition();
+
         Log.d(TAG, "onBindViewHolder: Started");
         holder.txtBookName.setText(books.get(position).getName());
         Glide.with(mContext)
@@ -58,8 +62,9 @@ public class BookRecViewAdapter extends RecyclerView.Adapter<BookRecViewAdapter.
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
                 Intent intent = new Intent(mContext, BookActivity.class);
-                intent.putExtra(BOOK_ID_KEY, books.get(position).getId());
+                intent.putExtra(BOOK_ID_KEY,books.get(position).getId());
                 mContext.startActivity(intent);
+
             }
         });
 
@@ -230,7 +235,6 @@ public class BookRecViewAdapter extends RecyclerView.Adapter<BookRecViewAdapter.
             txtDescription = itemView.findViewById(R.id.txtShortDesc);
             btnDelete = itemView.findViewById(R.id.btnDelete);
             expandedRelLayout = itemView.findViewById(R.id.expandedRelLayout);
-
             downArrow.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -239,7 +243,6 @@ public class BookRecViewAdapter extends RecyclerView.Adapter<BookRecViewAdapter.
                     notifyItemChanged(getAdapterPosition());
                 }
             });
-
             upArrow.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

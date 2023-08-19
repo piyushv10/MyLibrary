@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.mylibrary">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,10 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyLibrary">
         <activity
+            android:name=".PdfViewerActivity"
+            android:exported="false" />
+        <activity
             android:name=".AmazonActivity"
             android:exported="false"
-            android:label="@string/activity_amazon"
-            />
+            android:label="@string/activity_amazon" />
         <activity
             android:name=".TwitterActivity"
             android:exported="false"
@@ -27,9 +28,7 @@
         <activity
             android:name=".GoogleActivity"
             android:exported="false"
-            android:label="@string/activity_google">
-
-        </activity>
+            android:label="@string/activity_google"></activity>
         <activity
             android:name=".LoginActivity"
             android:exported="true">
@@ -41,8 +40,7 @@
         </activity>
         <activity
             android:name=".RegistrationActivity"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".WebsiteActivity"
             android:exported="false" />

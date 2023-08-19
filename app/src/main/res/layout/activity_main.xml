@@ -33,7 +33,7 @@
     <Button
         android:id="@+id/btnCurrentlyReading"
         android:layout_width="230dp"
-        android:layout_height="43dp"
+        android:layout_height="48dp"
         android:layout_marginTop="10dp"
         android:text="Currently Reading"
         app:layout_constraintEnd_toEndOf="@+id/btnAllBooks"
@@ -80,25 +80,38 @@
         app:layout_constraintStart_toStartOf="@+id/btnAddToFavBooks"
         app:layout_constraintTop_toBottomOf="@+id/btnAddToFavBooks" />
 
+    <Button
+        android:id="@+id/btnLogOut"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="LogOut"
+        app:layout_constraintEnd_toEndOf="@+id/btnAbout"
+        app:layout_constraintStart_toStartOf="@+id/btnAbout"
+        app:layout_constraintTop_toBottomOf="@+id/btnAbout" />
+
+
     <ImageView
         android:id="@+id/imgLogo"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="68dp"
+        android:src="@mipmap/library1"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.442"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@mipmap/library1"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txtLicense"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:text="Developed By Piyush"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+<!--    <TextView-->
+<!--        android:id="@+id/txtLicense"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginBottom="24dp"-->
+<!--        android:text="Developed By Piyush"-->
+<!--        android:textStyle="bold|italic"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

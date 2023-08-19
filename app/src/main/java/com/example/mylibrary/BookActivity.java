@@ -2,7 +2,7 @@ package com.example.mylibrary;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
+import static com.example.mylibrary.BookActivity.BOOK_ID_KEY;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -18,13 +18,17 @@ import java.util.ArrayList;
 
 public class BookActivity extends AppCompatActivity {
 
+
     public static final String BOOK_ID_KEY = "bookId";
+    Book b1;
     private TextView nameText,txtBookName,authorText;
     private TextView pagesText,descriptionText,txtDescription;
     private TextView txtPages,txtAuthorName;
-    private Button btnAddToCurrentlyReading,btnAddToAlreadyRead;
+    private Button btnAddToCurrentlyReading,btnAddToAlreadyRead,btnViewPdf;
     private Button btnAddToWishList,btnAddToFavourites,btnBuyBook;
     private ImageView bookImage;
+    private ArrayList<Book> books = new ArrayList<Book>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,16 @@ public class BookActivity extends AppCompatActivity {
 
         //TODO: get the data from recycler view in here
 
+        btnViewPdf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getApplicationContext(),PdfViewerActivity.class);
+//                intent.putExtra(BOOK_ID_KEY,b1.getId());
+                startActivity(intent);
+            }
+        });
+
         btnBuyBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,7 +59,6 @@ public class BookActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
 
         Intent intent = getIntent();
         if (null != intent){
@@ -194,13 +207,13 @@ public class BookActivity extends AppCompatActivity {
     }
 
     private void initViews() {
+        btnViewPdf = findViewById(R.id.viewPdf);
         btnAddToCurrentlyReading = findViewById(R.id.btnAddToCurrentlyReading);
         btnAddToAlreadyRead = findViewById(R.id.btnAddToAlreadyRead);
         btnAddToWishList = findViewById(R.id.btnAddToWishList);
         btnAddToFavourites = findViewById(R.id.btnAddToFavourites);
         btnBuyBook = findViewById(R.id.btnBuyBook);
         bookImage = findViewById(R.id.bookImage);
-
 
         txtBookName = findViewById(R.id.txtBookName);
         txtPages = findViewById(R.id.txtPages);

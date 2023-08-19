@@ -15,6 +15,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MainActivity extends AppCompatActivity {
 
     private Button btnAllBooks;
@@ -23,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
     private Button btnAddToWishList;
     private Button btnAddToFavBooks;
     private Button btnAbout;
+
+    private Button btnLogOut;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +104,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
         Util.getObject(this);
+
+
 
     }
 
@@ -109,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
         btnAddToWishList = findViewById(R.id.btnAddToWishList);
         btnAddToFavBooks = findViewById(R.id.btnAddToFavBooks);
         btnAbout = findViewById(R.id.btnAbout);
+        btnLogOut = findViewById(R.id.btnLogOut);
     }
 
     @Override
@@ -116,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case android.R.id.home:
                 onBackPressed();
+
                 break;
             default:
                 break;
